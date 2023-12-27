@@ -1,2 +1,2 @@
 all:
-	cd .. && ./make.py
+	cd .. && ./make.py --run
