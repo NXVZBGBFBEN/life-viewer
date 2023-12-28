@@ -27,4 +27,6 @@ void draw() {
       rect(col * cellSize, row * cellSize, cellSize, cellSize);
     }
   }
+  delay(100);
+  field.next();
 }
