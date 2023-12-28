@@ -6,7 +6,7 @@ class Config {
     var XDGConfigHome = Optional.ofNullable(System.getenv("XDG_CONFIG_HOME"));
     var userHome = System.getProperty("user.home");
     var configDir = XDGConfigHome.map(XDGPath -> Path.of(XDGPath)).orElse(Path.of(userHome, ".config"));
-    return configDir.resolve("config.xml");
+    return configDir.resolve("life-viewer/config.xml");
   }
 
   Config() {
