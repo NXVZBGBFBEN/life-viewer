@@ -2,6 +2,8 @@ void settings() {
   size(600, 600);
 }
 
+Config config = new Config();
+
 void setup() {
   var controlFrame = new ControlFrame();
   controlFrame.setVisible(true);
