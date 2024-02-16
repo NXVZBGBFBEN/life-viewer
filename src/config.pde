@@ -34,7 +34,7 @@ class Config {
       }
     } catch (Exception e) {
       var frame = new JFrame();
-      JOptionPane.showMessageDialog(frame, "設定ファイルの読み書き時にエラーが発生しました．", "Error", JOptionPane.ERROR_MESSAGE);
+      JOptionPane.showMessageDialog(frame, "設定ファイルの読み書き時にエラーが発生しました．\nデフォルト設定で起動します．", "Error", JOptionPane.ERROR_MESSAGE);
     }
   }
 }
