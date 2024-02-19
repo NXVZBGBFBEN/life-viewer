@@ -1,13 +1,12 @@
 class Field {
-  private int rowSize;
-  private int colSize;
+  private int numberOfCells;
   private boolean[][] cells;
   private boolean[][] bufferedCells;
 
   private void next() {
     var neighbor = 0;
-    for (int row = 0; row < rowSize; row++) {
-      for (int col = 0; col < colSize; col++) {
+    for (int row = 0; row < numberOfCells; row++) {
+      for (int col = 0; col < numberOfCells; col++) {
         neighbor = countNeighbor(row, col);
         if (!cells[row][col] && neighbor == 3) {
           bufferedCells[row][col] = true;
@@ -20,8 +19,8 @@ class Field {
         }
       }
     }
-    for (int row = 0; row < rowSize; row++) {
-        System.arraycopy(bufferedCells[row], 0, cells[row], 0, rowSize);
+    for (int row = 0; row < numberOfCells; row++) {
+        System.arraycopy(bufferedCells[row], 0, cells[row], 0, numberOfCells);
     }
   }
 
@@ -45,13 +44,12 @@ class Field {
     }
   }
 
-  Field(int rowSize, int colSize) {
-    this.rowSize = rowSize;
-    this.colSize = colSize;
-    cells = new boolean[rowSize][colSize];
-    bufferedCells = new boolean[rowSize][colSize];
-    for (int row = 0; row < rowSize; row++) {
-      for (int col = 0; col < colSize; col++) {
+  Field(int numberOfCells) {
+    this.numberOfCells = numberOfCells;
+    cells = new boolean[numberOfCells][numberOfCells];
+    bufferedCells = new boolean[numberOfCells][numberOfCells];
+    for (int row = 0; row < numberOfCells; row++) {
+      for (int col = 0; col < numberOfCells; col++) {
         cells[row][col] = int(random(2)) == 1;
       }
     }

@@ -2,6 +2,10 @@ void settings() {
   size(600, 600);
 }
 
+Config config = new Config();
+Field field = new Field(config.numberOfCells);
+int cellSize = 600 / config.numberOfCells;
+
 void setup() {
   var controlFrame = new ControlFrame();
   controlFrame.setVisible(true);
@@ -9,16 +13,10 @@ void setup() {
   surface.setTitle("life-viewer");
 }
 
-int cellSize = 6;
-int rowSize = 100;
-int colSize = 100;
-
-Field field = new Field(rowSize, colSize);
-
 void draw() {
   background(0);
-  for (int row = 0; row < rowSize; row++) {
-    for (int col = 0; col < colSize; col++) {
+  for (int row = 0; row < config.numberOfCells; row++) {
+    for (int col = 0; col < config.numberOfCells; col++) {
       if (field.cells[row][col]) {
         fill(255);
       } else {
