@@ -3,6 +3,7 @@ void settings() {
 }
 
 Config config = new Config();
+Field field = new Field(config.rowSize, config.colSize);
 
 void setup() {
   var controlFrame = new ControlFrame();
@@ -11,22 +12,16 @@ void setup() {
   surface.setTitle("life-viewer");
 }
 
-int cellSize = 6;
-int rowSize = 100;
-int colSize = 100;
-
-Field field = new Field(rowSize, colSize);
-
 void draw() {
   background(0);
-  for (int row = 0; row < rowSize; row++) {
-    for (int col = 0; col < colSize; col++) {
+  for (int row = 0; row < config.rowSize; row++) {
+    for (int col = 0; col < config.colSize; col++) {
       if (field.cells[row][col]) {
         fill(255);
       } else {
         fill(0);
       }
-      rect(col * cellSize, row * cellSize, cellSize, cellSize);
+      rect(col * config.cellSize, row * config.cellSize, config.cellSize, config.cellSize);
     }
   }
   delay(100);
