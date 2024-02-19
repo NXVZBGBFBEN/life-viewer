@@ -3,7 +3,8 @@ void settings() {
 }
 
 Config config = new Config();
-Field field = new Field(config.rowSize, config.colSize);
+Field field = new Field(config.numberOfCells);
+int cellSize = 600 / config.numberOfCells;
 
 void setup() {
   var controlFrame = new ControlFrame();
@@ -14,14 +15,14 @@ void setup() {
 
 void draw() {
   background(0);
-  for (int row = 0; row < config.rowSize; row++) {
-    for (int col = 0; col < config.colSize; col++) {
+  for (int row = 0; row < config.numberOfCells; row++) {
+    for (int col = 0; col < config.numberOfCells; col++) {
       if (field.cells[row][col]) {
         fill(255);
       } else {
         fill(0);
       }
-      rect(col * config.cellSize, row * config.cellSize, config.cellSize, config.cellSize);
+      rect(col * cellSize, row * cellSize, cellSize, cellSize);
     }
   }
   delay(100);

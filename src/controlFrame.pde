@@ -9,7 +9,9 @@ class ControlFrame extends JFrame {
     var menubar = new JMenuBar();
 
     var fileMenu = new JMenu("File");
+    var configMenu = new JMenu("Config");
     menubar.add(fileMenu);
+    menubar.add(configMenu);
     
     var saveItem = new JMenuItem("Save");
     fileMenu.add(saveItem);
