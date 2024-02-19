@@ -8,9 +8,7 @@ import java.util.Properties;
 
 class Config {
   private Properties properties;
-  int cellSize;
-  int rowSize;
-  int colSize;
+  int numberOfCells;
 
   private Path getConfigPath() {
     var XDGConfigHome = Optional.ofNullable(System.getenv("XDG_CONFIG_HOME"));
@@ -38,15 +36,11 @@ class Config {
   }
 
   private void loadAll() {
-    cellSize = loadProperty("cellSize", 6, (s) -> Integer.parseInt(s));
-    rowSize = loadProperty("rowSize", 100, (s) -> Integer.parseInt(s));
-    colSize = loadProperty("colSize", 100, (s) -> Integer.parseInt(s));
+    numberOfCells = loadProperty("numberOfCells", 100, (s) -> Integer.parseInt(s));
   }
 
   private void saveAll() {
-    saveProperty("cellSize", cellSize, (s) -> Integer.toString(s));
-    saveProperty("rowSize", rowSize, (s) -> Integer.toString(s));
-    saveProperty("colSize", colSize, (s) -> Integer.toString(s));
+    saveProperty("numberOfCells", numberOfCells, (s) -> Integer.toString(s));
   }
 
   private void readFromFile(File configFile) {
@@ -78,6 +72,7 @@ class Config {
     if (Files.exists(configPath)) {
       readFromFile(configPath.toFile());
       loadAll();
+      saveAll();
     } else {
       loadAll();
       saveAll();
@@ -87,7 +82,7 @@ class Config {
         var frame = new JFrame();
         JOptionPane.showMessageDialog(frame, "設定ファイルの保存ディレクトリ作成時にエラーが発生しました．", "Error", JOptionPane.ERROR_MESSAGE);
       }
-      writeToFile(configPath.toFile());
     }
+    writeToFile(configPath.toFile());
   }
 }
